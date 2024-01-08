@@ -1,31 +1,26 @@
 using System.Text.Json;
+using AutomaticBroccoli.CLI.Models;
 
-namespace AutomaticBroccoli.CLI;
-public class OpenLoop
+namespace AutomaticBroccoli.CLI.Repository;
+
+public static class OpenLoopsRepository
 {
-    public string Note { get; set; }
-    public DateTimeOffset CreatedDate { get; set; }
-}
+    private static string DirectoryName = "./openLoops/";
 
-
-public class OpenLoopsRepository
-{
-    private const string DirectoryName = "./openLoops/";
-
-    public bool Add(OpenLoop newOpenLoop)
+    public static bool Add(OpenLoop newOpenLoop)
     {
         Directory.CreateDirectory(DirectoryName);
 
         var json = JsonSerializer.Serialize(newOpenLoop, new JsonSerializerOptions { WriteIndented = true });
 
         var fileName = $"{Guid.NewGuid()}.json";
-        var filePath =  Path.Combine(DirectoryName, fileName);
+        var filePath = Path.Combine(DirectoryName, fileName);
 
         File.WriteAllText(filePath, json);
 
         return true;
     }
-    public OpenLoop[] Get()
+    public static OpenLoop[] Get()
     {
         var files = Directory.GetFiles(DirectoryName);
 
