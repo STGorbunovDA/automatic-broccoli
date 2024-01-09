@@ -1,4 +1,4 @@
-﻿using AutomaticBroccoli.CLI.Repository;
+﻿using AutomaticBroccoli.DataAccess.Repository;
 
 namespace AutomaticBroccoli.CLI.Operation;
 

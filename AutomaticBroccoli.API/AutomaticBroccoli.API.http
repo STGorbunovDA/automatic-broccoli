@@ -1,0 +1,6 @@
+@AutomaticBroccoli.API_HostAddress = http://localhost:5167
+
+GET {{AutomaticBroccoli.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

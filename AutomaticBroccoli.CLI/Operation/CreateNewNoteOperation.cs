@@ -1,5 +1,5 @@
-﻿using AutomaticBroccoli.CLI.Models;
-using AutomaticBroccoli.CLI.Repository;
+﻿using AutomaticBroccoli.DataAccess.Models;
+using AutomaticBroccoli.DataAccess.Repository;
 
 namespace AutomaticBroccoli.CLI.Operation;
 
