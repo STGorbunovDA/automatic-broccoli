@@ -18,8 +18,7 @@ public class CreateNewNoteOperation : IOperation
         } while (string.IsNullOrWhiteSpace(note));
 
 
-        OpenLoopsRepository.Add(
-            new OpenLoop(Guid.NewGuid(), note, DateTimeOffset.UtcNow));
+        OpenLoopsRepository.Add(new OpenLoop(Guid.NewGuid(), note, DateTimeOffset.UtcNow));
         
     }
 }
