@@ -44,11 +44,7 @@ namespace AutomaticBroccoli.API.Controllers
         public async Task<IActionResult> Create([FromBody]CreateOpenLoopRequest request)
         {
 
-            var openLoopId = OpenLoopsRepository.Add(new OpenLoop
-            {
-                Note = request.Note,
-                CreatedDate = DateTimeOffset.UtcNow
-            });
+            var openLoopId = OpenLoopsRepository.Add(new OpenLoop(Guid.NewGuid(), request.Note, DateTimeOffset.UtcNow));
 
             return Ok(openLoopId);
         }

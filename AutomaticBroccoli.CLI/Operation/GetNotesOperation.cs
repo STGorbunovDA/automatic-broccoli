@@ -8,7 +8,7 @@ public class GetNotesOperation : IOperation
     {
 
         var openLoops = OpenLoopsRepository.Get();
-        var groop = openLoops.GroupBy(x => new DateTime(x.CreatedDate.Year, x.CreatedDate.Month, x.CreatedDate.Day));
+        var groop = openLoops.GroupBy(x => new DateTime(x.CreatedDate.Value.Year, x.CreatedDate.Value.Month, x.CreatedDate.Value.Day));
 
 
         foreach (var groupOfOpenLoops in groop)
