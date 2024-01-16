@@ -11,11 +11,11 @@ namespace AutomaticBroccoli.API.Controllers
     [Route("[controller]")]
     [Produces(MediaTypeNames.Application.Json)]
     [Consumes(MediaTypeNames.Application.Json)]
-    public class OpenLoopController : ControllerBase
+    public class OpenLoopsController : ControllerBase
     {
-        private readonly ILogger<OpenLoopController> _logger;
+        private readonly ILogger<OpenLoopsController> _logger;
 
-        public OpenLoopController(ILogger<OpenLoopController> logger)
+        public OpenLoopsController(ILogger<OpenLoopsController> logger)
         {
             _logger = logger;
         }
@@ -41,11 +41,13 @@ namespace AutomaticBroccoli.API.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(Guid), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> Create([FromBody]CreateOpenLoopRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateOpenLoopRequest request)
         {
+            var createNoteResult = Note.Create(request.Note);
+            if (createNoteResult.IsFailure)
+                return BadRequest();
 
-            var openLoopId = OpenLoopsRepository.Add(new OpenLoop(Guid.NewGuid(), request.Note, DateTimeOffset.UtcNow));
-
+            var openLoopId = OpenLoopsRepository.Add(new OpenLoop(Guid.NewGuid(), createNoteResult.Value, DateTimeOffset.UtcNow));
             return Ok(openLoopId);
         }
     }

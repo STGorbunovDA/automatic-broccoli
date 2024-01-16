@@ -1,4 +1,3 @@
-
 namespace AutomaticBroccoli.API
 {
     public class Program
@@ -31,6 +30,10 @@ namespace AutomaticBroccoli.API
             app.MapControllers();
 
             app.Run();
+
+            
         }
     }
 }
+
+public partial class Program { }

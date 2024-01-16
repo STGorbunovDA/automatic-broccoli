@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomaticBroccoli.DataAcces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticBroccoli.UnitTests", "AutomaticBroccoli.UnitTests\AutomaticBroccoli.UnitTests.csproj", "{435525AA-1AEE-4A14-9BBA-4789D8FBED55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticBroccoli.IntegrationTests", "AutomaticBroccoli.IntegrationTests\AutomaticBroccoli.IntegrationTests.csproj", "{B9D598AF-B771-4A59-BE3D-3BDD82E8A9E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{435525AA-1AEE-4A14-9BBA-4789D8FBED55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{435525AA-1AEE-4A14-9BBA-4789D8FBED55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{435525AA-1AEE-4A14-9BBA-4789D8FBED55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9D598AF-B771-4A59-BE3D-3BDD82E8A9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9D598AF-B771-4A59-BE3D-3BDD82E8A9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9D598AF-B771-4A59-BE3D-3BDD82E8A9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9D598AF-B771-4A59-BE3D-3BDD82E8A9E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
