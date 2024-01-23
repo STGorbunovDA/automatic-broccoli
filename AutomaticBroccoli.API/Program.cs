@@ -1,3 +1,7 @@
+using AutomaticBroccoli.DataAccess.Postgres;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace AutomaticBroccoli.API
 {
     public class Program
@@ -12,6 +16,11 @@ namespace AutomaticBroccoli.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<AutomaticBroccoliDbContext>(options =>
+            {
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
 
             var app = builder.Build();
 
