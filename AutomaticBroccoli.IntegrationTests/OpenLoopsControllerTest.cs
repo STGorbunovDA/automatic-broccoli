@@ -1,7 +1,6 @@
 using AutomaticBroccoli.DataAccess.Models;
 using AutomaticBroccoli.DataAccess.Repository;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AutomaticBroccoli.IntegrationTests
 {
@@ -17,7 +16,7 @@ namespace AutomaticBroccoli.IntegrationTests
 
             OpenLoopsRepository.Add(new OpenLoop(Guid.NewGuid(), "Test note", DateTimeOffset.UtcNow));
 
-            var response = await client.GetAsync("OpenLoops");
+            var response = await client.GetAsync("/v1/OpenLoops");
             response.EnsureSuccessStatusCode();
 
             Directory.Delete(OpenLoopsRepository.DataDirecotory, true);
