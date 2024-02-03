@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using System.Net;
 using AutomaticBroccoli.DataAccess.Postgres;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutomaticBroccoli.API.Controllers
 {
@@ -26,7 +27,12 @@ namespace AutomaticBroccoli.API.Controllers
         [ProducesResponseType(typeof(GetOpenLoopsResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> GetV2()
         {
-            var openLoops = _automaticBroccoliDbContext.OpenLoops.ToArray();
+            //var openLoops = _automaticBroccoliDbContext.OpenLoops.ToArray();
+
+            var openLoops = _automaticBroccoliDbContext.OpenLoops
+                            .AsNoTracking()
+                            .Include(x => x.User)
+                            .ToArray();
 
             var response = new GetOpenLoopsResponse()
             {

@@ -1,5 +1,11 @@
+//https://www.youtube.com/watch?v=s6fHXqzFzDI&list=PLmmIuINqEtvwFrQ9tpYzGMauy4GVp6GuR&index=39
+//2:25:55
+
+
 // dotnet new tool-manifest
 // dotnet tool install dotnet-ef
+
+
 // dotnet ef dbcontext info --project .\AutomaticBroccoli.DataAccess.Postgres\
 
 // dotnet ef migrations add Init -s .\AutomaticBroccoli.API\ -p .\AutomaticBroccoli.DataAccess.Postgres\
