@@ -15,3 +15,6 @@
 // dotnet ef migrations remove -s .\AutomaticBroccoli.API\ -p .\AutomaticBroccoli.DataAccess.Postgres\
 
 // dotnet ef database update -s .\AutomaticBroccoli.API\ -p .\AutomaticBroccoli.DataAccess.Postgres\
+
+
+// dotnet ef migrations add ChangeColumnUserId -s .\AutomaticBroccoli.API\ -p .\AutomaticBroccoli.DataAccess.Postgres\
