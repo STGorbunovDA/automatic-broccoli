@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomaticBroccoli.UnitTests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomaticBroccoli.IntegrationTests", "AutomaticBroccoli.IntegrationTests\AutomaticBroccoli.IntegrationTests.csproj", "{B9D598AF-B771-4A59-BE3D-3BDD82E8A9E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticBroccoli.DataAccess.Postgres", "AutomaticBroccoli.DataAccess.Postgres\AutomaticBroccoli.DataAccess.Postgres.csproj", "{809D9E89-2EEC-4B7B-9CD8-F01C57256B37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomaticBroccoli.DataAccess.Postgres", "AutomaticBroccoli.DataAccess.Postgres\AutomaticBroccoli.DataAccess.Postgres.csproj", "{809D9E89-2EEC-4B7B-9CD8-F01C57256B37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticBroccoli.DbLoad.CLI", "AutomaticBroccoli.DbLoad.CLI\AutomaticBroccoli.DbLoad.CLI.csproj", "{0AEEDFB4-C8E5-45DC-87A4-4C5A822BE480}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{809D9E89-2EEC-4B7B-9CD8-F01C57256B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{809D9E89-2EEC-4B7B-9CD8-F01C57256B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{809D9E89-2EEC-4B7B-9CD8-F01C57256B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AEEDFB4-C8E5-45DC-87A4-4C5A822BE480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEEDFB4-C8E5-45DC-87A4-4C5A822BE480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEEDFB4-C8E5-45DC-87A4-4C5A822BE480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEEDFB4-C8E5-45DC-87A4-4C5A822BE480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
