@@ -26,7 +26,7 @@ namespace AutomaticBroccoli.DataAccess.Postgres.Entities
                 builder.Property(x => x.Login).HasMaxLength(50);
                 builder.HasMany(x => x.OpenLoops)
                     .WithOne(x => x.User)
-                    .HasForeignKey(x => x.UsertId);
+                    .HasForeignKey(x => x.UserId);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace AutomaticBroccoli.DataAccess.Postgres.Entities
             public string Note { get; set; }
             public DateTimeOffset CreatedDate { get; set; }
 
-            public int UsertId { get; set; }
+            public int UserId { get; set; }
             public User User { get; set; }
         }
 

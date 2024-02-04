@@ -58,7 +58,7 @@ namespace AutomaticBroccoli.API.Controllers
                 Id = Guid.NewGuid(),
                 Note = request.Note,
                 CreatedDate = DateTimeOffset.UtcNow,
-                UsertId = 1
+                UserId = 1
              };
             
             _automaticBroccoliDbContext.Add(openLoop);
