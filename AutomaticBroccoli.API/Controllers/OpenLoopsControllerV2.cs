@@ -1,22 +1,18 @@
 ﻿using AutomaticBroccoli.API.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Mime;
 using System.Net;
 using AutomaticBroccoli.DataAccess.Postgres;
 using Microsoft.EntityFrameworkCore;
 
 namespace AutomaticBroccoli.API.Controllers
 {
-    [ApiController]
     [Route("v2/[controller]")]
-    [Produces(MediaTypeNames.Application.Json)]
-    [Consumes(MediaTypeNames.Application.Json)]
-    public class OpenLoopsControllerV2 : ControllerBase
+    public class OpenLoopsV2Controller : BaseController
     {
         private readonly ILogger<OpenLoopsController> _logger;
         private readonly AutomaticBroccoliDbContext _automaticBroccoliDbContext;
 
-        public OpenLoopsControllerV2(ILogger<OpenLoopsController> logger, 
+        public OpenLoopsV2Controller(ILogger<OpenLoopsController> logger, 
             AutomaticBroccoliDbContext automaticBroccoliDbContext)
         {
             _logger = logger;
@@ -25,14 +21,23 @@ namespace AutomaticBroccoli.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(GetOpenLoopsResponse), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> GetV2()
+        public async Task<IActionResult> Get([FromQuery]int userId, int offset = 0, int count = 50)
         {
             //var openLoops = _automaticBroccoliDbContext.OpenLoops.ToArray();
 
-            var openLoops = _automaticBroccoliDbContext.OpenLoops
-                            .AsNoTracking()
+            var openLoops = await _automaticBroccoliDbContext
+                            .OpenLoops
                             .Include(x => x.User)
-                            .ToArray();
+                            .AsNoTracking()
+                            .Where(x => x.UserId == userId)
+                            .Skip(offset)
+                            .Take(count)
+                            .ToArrayAsync();
+            var totalCountOfOpenLoops = await _automaticBroccoliDbContext
+                .OpenLoops
+                .AsNoTracking()
+                .Where(x => x.UserId == userId)
+                .CountAsync();
 
             var response = new GetOpenLoopsResponse()
             {
@@ -40,8 +45,10 @@ namespace AutomaticBroccoli.API.Controllers
                 {
                     Id = x.Id,
                     Note = x.Note,
-                    CreatedDate = x.CreatedDate
-                }).ToArray()
+                    CreatedDate = x.CreatedDate,
+                    UserLogin = x.User.Login
+                }).ToArray(),
+                Total = totalCountOfOpenLoops
             };
 
             return Ok(response);
@@ -49,7 +56,7 @@ namespace AutomaticBroccoli.API.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(Guid), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> CreateV2([FromBody] CreateOpenLoopRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateOpenLoopRequest request)
         {
             //var openLoop = new OpenLoop(Guid.NewGuid(), request.Note, DateTimeOffset.UtcNow);
 
@@ -58,7 +65,7 @@ namespace AutomaticBroccoli.API.Controllers
                 Id = Guid.NewGuid(),
                 Note = request.Note,
                 CreatedDate = DateTimeOffset.UtcNow,
-                UsertId = 1
+                UserId = 1
              };
             
             _automaticBroccoliDbContext.Add(openLoop);
