@@ -15,11 +15,19 @@ namespace AutomaticBroccoli.API
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(option =>
+            {
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, "AutomaticBroccoli.API.xml");
+                option.IncludeXmlComments(filePath);
+            });
 
             builder.Services.AddDbContext<AutomaticBroccoliDbContext>(options =>
             {
-                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+                options
+#if DEBUG
+                .EnableSensitiveDataLogging()
+#endif
+                .UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
 
             var app = builder.Build();
