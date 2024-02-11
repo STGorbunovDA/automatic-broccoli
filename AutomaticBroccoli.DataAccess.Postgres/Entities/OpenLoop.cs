@@ -7,6 +7,10 @@ namespace AutomaticBroccoli.DataAccess.Postgres.Entities
     {
         public sealed class OpenLoop
         {
+            public OpenLoop()
+            {
+                CreatedDate = DateTimeOffset.UtcNow;
+            }
             public Guid Id { get; set; }
             public string Note { get; set; }
             public DateTimeOffset CreatedDate { get; set; }
