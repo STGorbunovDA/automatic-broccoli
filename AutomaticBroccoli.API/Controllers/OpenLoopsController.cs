@@ -7,11 +7,7 @@ using System.Net.Mime;
 
 namespace AutomaticBroccoli.API.Controllers
 {
-    [ApiController]
-    [Route("v1/[controller]")]
-    [Produces(MediaTypeNames.Application.Json)]
-    [Consumes(MediaTypeNames.Application.Json)]
-    public class OpenLoopsController : ControllerBase
+    public class OpenLoopsController : BaseController
     {
         private readonly ILogger<OpenLoopsController> _logger;
 
@@ -20,6 +16,14 @@ namespace AutomaticBroccoli.API.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get list of open loops.
+        /// </summary>
+        /// <remarks>
+        /// Allow a user get list of open loops.<br/>
+        /// Open loop is short description what  a user worries about.
+        /// </remarks>
+        /// <returns>List of open loops</returns>
         [HttpGet]
         [ProducesResponseType(typeof(GetOpenLoopsResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get()
